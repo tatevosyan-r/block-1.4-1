@@ -1,109 +1,101 @@
-@font-face {
-    font-family: 'TT Lakes';
-    src: url('../font/TTLakes-Regular.eot');
-    src: local('TT Lakes Regular'), local('TTLakes-Regular'),
-        url('../font/TTLakes-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../font/TTLakes-Regular.woff') format('woff'),
-        url('../font/TTLakes-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'TT Lakes';
-    src: url('../font/TTLakes-Medium.eot');
-    src: local('TT Lakes Medium'), local('TTLakes-Medium'),
-        url('../font/TTLakes-Medium.eot?#iefix') format('embedded-opentype'),
-        url('../font/TTLakes-Medium.woff') format('woff'),
-        url('../font/TTLakes-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'TT Lakes';
-    src: url('../font/TTLakes-Bold.eot');
-    src: local('TT Lakes Bold'), local('TTLakes-Bold'),
-        url('../font/TTLakes-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../font/TTLakes-Bold.woff') format('woff'),
-        url('../font/TTLakes-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
 :root {
-    --primary-text: #1B1C21;
-    --secondary-text: #7E7E82;
+    /* Цвета */
+    --color-primary: #FF3E79;
+    --color-primary-text: #1B1C21;
+    --color-secondary-text: #7E7E82;
+    --color-active-marker: #41F6D7;
+    --color-white: #FFFFFF;
+    --color-shadow: rgba(0, 0, 0, 0.2);
+    
+    /* Размеры */
+    --size-border-radius: 4px;
+    --size-menu-width: 320px;
+    --size-menu-height: 1024px;
+    
+    /* Отступы */
+    --gap-small: 5px;
+    --gap-medium: 10px;
+    --gap-large: 16px;
+    --gap-xlarge: 24px;
+    --gap-xxlarge: 32px;
+    --gap-section: 40px;
+    --gap-main: 46px;
+    --gap-header-top: 18px;
+    --gap-footer: 268px;
+    
+    /* Текст */
+    --font-family: 'TT Lakes', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 24px;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --line-height-base: 24px;
+    --line-height-large: 32px;
+    --letter-spacing-base: -0.2px;
+    --letter-spacing-large: -0.6px;
+    
+    /* Анимации */
+    --transition-speed: 0.2s ease;
 }
 
-
-
-
+/* Базовые стили меню */
 .burger-menu {
     display: flex;
     flex-direction: column;
-    gap: 268px;
-    width: 320px;
-    height: 1024px;
+    gap: var(--gap-footer);
+    width: var(--size-menu-width);
+    height: var(--size-menu-height);
     z-index: 10;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 16px 0 16px -2px rgba(0, 0, 0, 0.2);
-    padding: 0 24px;
-
+    background-color: var(--color-white);
+    box-shadow: 16px 0 16px -2px var(--color-shadow);
+    padding: 0 var(--gap-xlarge);
 }
 
 .header__burger {
     display: flex;
     flex-direction: column;
-    gap: 46px;
+    gap: var(--gap-main);
 }
 
+/* Верхняя часть меню */
 .burger__top {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    margin-top: 18px;
-}
-
-.burger__top-left {
-    display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 16px;
+    margin-top: var(--gap-header-top);
 }
 
-.nav__list {
+.burger__top-left,
+.burger__top-right {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-large);
+}
+
+/* Навигационное меню */
+.header__menu .nav__list {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--gap-xxlarge);
 }
 
-
-
-/* Стили для пунктов меню */
 .header__menu .nav__list .nav__list-item {
-    color: var(--primary-text);
-    font-family: 'TT Lakes', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: -0.2px;
-    text-align: left;
+    color: var(--color-primary-text);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-base);
+    letter-spacing: var(--letter-spacing-base);
     text-decoration: none;
-    display: block;
-    padding-left: 0;
-    transition: color 0.2s ease;
+    transition: color var(--transition-speed);
 }
 
-/* Состояние при наведении */
 .header__menu .nav__list .nav__list-item:hover {
-    color: var(--secondary-text);
+    color: var(--color-secondary-text);
 }
 
-/* Активный пункт меню */
 .header__menu .nav__list .nav__list-item.active {
-    color: var(--secondary-text);
+    color: var(--color-secondary-text);
     position: relative;
 }
 
@@ -115,84 +107,72 @@
     transform: translateY(-50%);
     height: 32px;
     width: 4px;
-    background-color: #41F6D7;
-    border-radius: 0 4px 4px 0;
+    background-color: var(--color-active-marker);
+    border-radius: 0 var(--size-border-radius) var(--size-border-radius) 0;
 }
 
-
-
-
-
+/* Футер меню */
 .footer__burger {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: var(--gap-section);
 }
 
 .footer__burger-items {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    gap: var(--gap-large);
 }
 
-.footer__birger-icon {
+.footer__burger-icons {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 16px;
+    gap: var(--gap-large);
 }
-.footer__birger-contacts {
+
+.footer__burger-contacts {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-
-}
-/* Стили для email в бургер-меню */
-.burger__email .burger__email-item,
-.burger__email .header__link {
-    color: var(--primary-text);
-    font-family: 'TT Lakes', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: -0.2px;
-
+    gap: var(--gap-medium);
 }
 
-
-.burger__phone a {
-    color: rgb(27, 28, 33);
-    font-family: 'TT Lakes', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 32px;
-    letter-spacing: -0.6px;
-    text-align: left;
+.footer__burger-contacts .burger__email,
+.footer__burger-contacts .burger__phone {
+    color: var(--color-primary-text);
+    font-family: var(--font-family);
     text-decoration: none;
-    display: inline-block;
-    transition: color 0.2s ease;
+    transition: color var(--transition-speed);
 }
 
+.footer__burger-contacts .burger__email {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-base);
+    letter-spacing: var(--letter-spacing-base);
+}
+
+.footer__burger-contacts .burger__phone {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-large);
+    letter-spacing: var(--letter-spacing-large);
+}
+
+/* Языковой переключатель */
 .menu__language {
     display: flex;
-    gap: 5px;
+    gap: var(--gap-small);
 }
 
-/* Стили для текста в ссылках */
-.menu__language li a {
-  color: #1B1C21;
-  font-family: 'TT Lakes', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: -0.2px;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
+.menu__language a {
+    color: var(--color-primary-text);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-base);
+    letter-spacing: var(--letter-spacing-base);
+    text-decoration: none;
 }
 
-/* Активная языковая ссылка */
-.menu__language li a.active {
-  color: #7E7E82;
+.menu__language a.active {
+    color: var(--color-secondary-text);
 }
